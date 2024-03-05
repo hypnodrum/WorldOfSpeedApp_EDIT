@@ -1,0 +1,23 @@
+<!-- catalogue template -->
+{% extends "base.html" %}
+{% block main_content %}
+<section id="catalogue">
+  {% if cars %}
+    <h1>Total Cars: {{ cars.count }}</h1>
+    {% for car in cars %}
+      <div class="car-card">
+        <div class="image-wrap">
+          <img src="{{ car.image_url }}" alt="{{ car.description }}"/>
+        </div>
+        <h3>{{ car.car_type }}</h3>
+        <h1>{{ car.car_model }}</h1>
+        <div class="details-buttons">
+          <a href="{% url 'details_car' pk=car.pk %}" class="details-btn">Details</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="no-articles">No cars yet</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- profile-create template -->
+{% extends "web/index-no-profile.html" %}
+{% block main_content %}
+<section id="register-page" class="content auth">
+  <form action="{% url 'create_profile' %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <div class="brand-logo"></div>
+      <h1>Create Profile</h1>
+      {{ form.as_p }}
+      <input class="btn submit" type="submit" value="Register" />
+    </div>
+  </form>
+</section>
+{% endblock %}
