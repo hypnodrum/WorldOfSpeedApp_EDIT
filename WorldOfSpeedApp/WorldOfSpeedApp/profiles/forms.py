@@ -89,7 +89,7 @@ class EditProfileForm(forms.ModelForm):
             raise forms.ValidationError("The two password fields didn't match.")
         return cleaned_data
 
-    def save(self, commit=True):
+        def save(self, commit=True):
         user = super().save(commit=False)
         current_password = self.cleaned_data.get("current_password")
         new_password1 = self.cleaned_data.get("new_password1")
@@ -101,11 +101,19 @@ class EditProfileForm(forms.ModelForm):
             user.save()
             profile_picture = self.cleaned_data.get("profile_picture")
             age = self.cleaned_data.get("age")
+
+            # Check if the user has a related profile, create one if not
+            if not hasattr(user, 'profile'):
+                profile = Profile(user=user)
+            else:
+                profile = user.profile
+
+            # Update profile attributes
             if profile_picture:
-                user.profile.profile_picture = profile_picture
+                profile.profile_picture = profile_picture
             if age:
-                user.profile.age = age
-            user.profile.save()
+                profile.age = age
+            profile.save()
         return user
 
 
