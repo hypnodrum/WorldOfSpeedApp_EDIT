@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser, User
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.validators import MinValueValidator
+from WorldOfSpeedApp.profiles.mixin import CustomURLField
 
 
 class Profile(models.Model):
@@ -12,7 +13,7 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
-    profile_picture = models.URLField(blank=True, null=True)
+    profile_picture = CustomURLField(blank=True, null=True)
 
     def __str__(self):
         return self.user.username

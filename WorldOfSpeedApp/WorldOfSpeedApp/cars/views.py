@@ -1,42 +1,10 @@
-from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from WorldOfSpeedApp.cars.forms import CreateCarForm
 from WorldOfSpeedApp.cars.models import Car
 from django.views import generic as views
-
-
-class CreateCarForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
-
-        # if I want to show the username of the owner
-        # self.fields['owner'].initial = user.username
-        # self.fields['owner'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
-
-    class Meta:
-        model = Car
-        fields = ("car_type", "car_model", "year", "image_url", "price")
-        labels = {
-            'car_type': 'Type',
-            'car_model': 'Model',
-            'year': 'Year',
-            'image_url': 'Image URL',
-            'price': 'Price',
-        }
-
-        widgets = {
-            "image_url": forms.URLInput(attrs={"placeholder": "https://..."}),
-            # "owner": forms.HiddenInput(),
-        }
-
-    def save(self, commit=True):
-        car = super().save(commit=False)
-        if commit:
-            car.save()
-        return car
 
 
 def create_car(request):
