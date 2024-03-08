@@ -8,6 +8,6 @@
 <h3>1. Login screen:</h3>
 <img alt="Login screen" src="https://raw.githubusercontent.com/hypnodrum/WorldOfSpeedApp_EDIT/main/screenshots/login.png" align="center"/>
 <h3>2. Catalogue:</h3>
-<img alt="Login screen" src="https://raw.githubusercontent.com/hypnodrum/WorldOfSpeedApp_EDIT/main/screenshots/cataloguq.png" align="center"/>
+<img alt="Login screen" src="https://raw.githubusercontent.com/hypnodrum/WorldOfSpeedApp_EDIT/main/screenshots/catalogue.png" align="center"/>
 <h3>3. Profile:</h3>
 <img alt="Login screen" src="https://raw.githubusercontent.com/hypnodrum/WorldOfSpeedApp_EDIT/main/screenshots/profile.png" align="center"/>
